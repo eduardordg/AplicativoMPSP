@@ -12,9 +12,6 @@ namespace Am.Layers.Services
     public class PessoaFisicaService
     {
 
-        //Mock de chamadas da api, enquanto ela não fica pronta :)
-
-
         public CagedAllModel getCaged(string cpf)
         {
             string uri = "http://10.0.2.2:8080/caged/cpf?cpf=" + cpf; //não pode ser 127.0.0.1 pq ta sendo executado em Maquina Virtual, logo esse endereço acaba sendo o proprio loopback, por isso o 10.0.2.2
@@ -27,8 +24,7 @@ namespace Am.Layers.Services
             {
 
                 var resultado = resposta.Content.ReadAsStringAsync().Result;
-                cagedAll = JsonConvert.DeserializeObject<CagedAllModel>(resultado); // Não sei como fazer com string, no exemplo do professor ele usar objeto.
-                //dados = Convert.ToString(obj);
+                cagedAll = JsonConvert.DeserializeObject<CagedAllModel>(resultado); 
                 return cagedAll;
             }
             else
@@ -42,7 +38,7 @@ namespace Am.Layers.Services
 
         public List<CensecModel> getCensec()
         {
-            string uri = "http://10.0.2.2:8080/censec/";//também não busca por cpf 
+            string uri = "http://10.0.2.2:8080/censec/";
             List<CensecModel> censec = new List<CensecModel>();
 
 
@@ -52,7 +48,7 @@ namespace Am.Layers.Services
             if (resposta.IsSuccessStatusCode)
             {
                 var resultado = resposta.Content.ReadAsStringAsync().Result;
-                censec = JsonConvert.DeserializeObject<List<CensecModel>>(resultado); // Não sei como fazer com string, no exemplo do professor ele usar objeto.
+                censec = JsonConvert.DeserializeObject<List<CensecModel>>(resultado); 
                 
                 return censec;
             }
@@ -111,7 +107,7 @@ namespace Am.Layers.Services
 
         public List<SielModel> getSiel()
         {
-            string uri = "http://10.0.2.2:8080/siel/"; //esse portal não busca pelo cpf
+            string uri = "http://10.0.2.2:8080/siel/"; 
                                                        // SielModel siel = new SielModel();
             List<SielModel> siel = new List<SielModel>();
 
@@ -120,7 +116,7 @@ namespace Am.Layers.Services
             if (resposta.IsSuccessStatusCode)
             {
                 var resultado = resposta.Content.ReadAsStringAsync().Result;
-                siel = JsonConvert.DeserializeObject<List<SielModel>>(resultado); // Não sei como fazer com string, no exemplo do professor ele usar objeto.
+                siel = JsonConvert.DeserializeObject<List<SielModel>>(resultado); 
                 return siel;
             }
             else
@@ -131,7 +127,7 @@ namespace Am.Layers.Services
 
         public List<SivecModel> getSivec()
         {
-            string uri = "http://10.0.2.2:8080/sivec/"; //esse portal não busca por cpf
+            string uri = "http://10.0.2.2:8080/sivec/";
             List<SivecModel> sivec = new List<SivecModel>();
 
 
@@ -140,7 +136,7 @@ namespace Am.Layers.Services
             if (resposta.IsSuccessStatusCode)
             {
                 var resultado = resposta.Content.ReadAsStringAsync().Result;
-                sivec = JsonConvert.DeserializeObject<List<SivecModel>>(resultado); // Não sei como fazer com string, no exemplo do professor ele usar objeto.
+                sivec = JsonConvert.DeserializeObject<List<SivecModel>>(resultado); 
                 return sivec;
             }
             else

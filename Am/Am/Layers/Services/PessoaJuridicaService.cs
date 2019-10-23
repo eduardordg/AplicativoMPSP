@@ -11,8 +11,6 @@ namespace Am.Layers.Services
    public class PessoaJuridicaService
     {
 
-        //Mock de chamadas da api, enquanto ela não fica pronta :)
-
         public JucespModel getJucesp(string cnpj)
         {
             string uri = "http://10.0.2.2:8080/jucesp/cnpj?cnpj=" + cnpj;
@@ -24,7 +22,7 @@ namespace Am.Layers.Services
             if (resposta.IsSuccessStatusCode)
             {
                 var resultado = resposta.Content.ReadAsStringAsync().Result;
-                jucesp = JsonConvert.DeserializeObject<JucespModel>(resultado); // Não sei como fazer com string, no exemplo do professor ele usar objeto.
+                jucesp = JsonConvert.DeserializeObject<JucespModel>(resultado); 
                 return jucesp;
             }
             else
@@ -44,7 +42,7 @@ namespace Am.Layers.Services
             if (resposta.IsSuccessStatusCode)
             {
                 var resultado = resposta.Content.ReadAsStringAsync().Result;
-                cadesp = JsonConvert.DeserializeObject<CadespModel>(resultado); // Não sei como fazer com string, no exemplo do professor ele usar objeto.
+                cadesp = JsonConvert.DeserializeObject<CadespModel>(resultado);
                 return cadesp;
             }
             else
