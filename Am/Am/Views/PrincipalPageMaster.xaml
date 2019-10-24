@@ -9,8 +9,6 @@
 
             <Button Text="Pessoa Física" Clicked="PessoaFisicaClicked"></Button>
             <Button Text="Pessoa Jurídica" Clicked="PessoaJuridicaClicked"></Button>
-            
-            
             <Label Text="   "></Label>
             <Button Text="Sair " Clicked="SairClicked" ></Button>
 

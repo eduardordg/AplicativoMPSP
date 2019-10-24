@@ -63,7 +63,7 @@ namespace Am.Layers.Services
 
 
 
-        public string getInfocrim(string cpf) //IMAGE
+        public string getInfocrim(string cpf) 
         {
             string sourceImage = "infocrim.jpeg";
 

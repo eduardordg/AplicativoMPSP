@@ -24,13 +24,13 @@ namespace Am.ViewModels
             {
 
                 var pessoaFisicaBusiness = new PessoaFisicaBusiness(); //instancia business para acessar a service
-                var service = pessoaFisicaBusiness.getService(); //atribuiu o objeto service a uma variavel para fazer as chamadas das API dentros dos IF conforme resultados dos Switchs
-                var relatorio = new RelatorioViewModel(); // instancia relatorio para envio das informações para a tela
+                var service = pessoaFisicaBusiness.getService(); //atribuiu o objeto service a uma variavel para fazer as chamadas das API dentros dos IF conforme resultados do Picker
+                var relatorio = new RelatorioViewModel(); // instancia relatorio para envio das informações para a nova tela
 
 
 
 
-                //validação cpf NULO
+                //Validação cpf NULO
                 if (String.IsNullOrEmpty(cpf) == true)
                 {
 
@@ -39,7 +39,7 @@ namespace Am.ViewModels
 
                 else
                 {
-                    //Validação todos Switchs Nulos
+                    //Validação do Picker nulo
                     if (baseDados == null)
                     {
                         DependencyService.Get<IMessage>().ShortAlert("Por favor selecione ao menos uma base de dados para consulta");
@@ -60,7 +60,7 @@ namespace Am.ViewModels
                             List<CensecModel> listaCensec = new List<CensecModel>();
                             listaCensec = service.getCensec();
                             foreach (CensecModel censecCont in listaCensec)
-                            {                                                                        
+                            {
                                 relatorio.Resultado += (censecCont.ToString());
                             }
 
@@ -71,7 +71,7 @@ namespace Am.ViewModels
                             {
                                 relatorio.Resultado += (arpenpCont.ToString());
                             }
-                            
+
 
                             List<SielModel> listaSiel = new List<SielModel>();
                             listaSiel = service.getSiel();
@@ -94,22 +94,33 @@ namespace Am.ViewModels
                             relatorio.NomeImage = "------ARISP----";
                             relatorio.Image = sourceImage1;
 
-                            string sourceImage2 = service.getDetran(cpf);
+                            string sourceDetran1 = "";
+                            string sourceDetran2 = "";
+                            List<string> listaSource = service.getDetran(cpf);
                             relatorio.NomeImage2 = "------DETRAN----";
-                            relatorio.Image2 = sourceImage2;
+                            foreach (string arpenpCont in listaSource)
+                            {
+                                if (arpenpCont == "detran.jpeg")
+                                {
+                                    sourceDetran1 = arpenpCont;
+                                }
 
-                            string sourceImage3 = service.getInfocrim(cpf);
-                            relatorio.NomeImage3 = "------INFOCRIM----";
-                            relatorio.Image3 = sourceImage3;
+                                if (arpenpCont == "detran2.jpeg")
+                                {
+                                    sourceDetran2 = arpenpCont;
 
+                                }
+
+                            }
+                            relatorio.Image2 = sourceDetran1;
+                            relatorio.Image3 = sourceDetran2;
                             GlobalViewModel.Relatorio = relatorio;
 
+                            string sourceImage3 = service.getInfocrim(cpf);
+                            relatorio.NomeImage4 = "------INFOCRIM----";
+                            relatorio.Image4 = sourceImage3;
 
-
-
-                            
-                           
-
+                            GlobalViewModel.Relatorio = relatorio;
 
 
                         }
@@ -121,13 +132,12 @@ namespace Am.ViewModels
                         if (baseDados == "Caged")
                         {
                             CagedAllModel cagedAll = new CagedAllModel();
-                            cagedAll = service.getCaged(cpf); //envio dos dados que a instancia da service conseguiu
+                            cagedAll = service.getCaged(cpf);
                             relatorio.Resultado += cagedAll.caged.ToString();
                             relatorio.Resultado += cagedAll.cagedEmpresa.ToString();
-                            relatorio.Resultado += cagedAll.cagedTrabalhador.ToString();// soma-se ao valor que já há no resultado
+                            relatorio.Resultado += cagedAll.cagedTrabalhador.ToString();
                             GlobalViewModel.Relatorio = relatorio;// manda os dados para a global, fazendo a RelatorioViewModel enxergar
 
-                            //mesma coisa acontece nos 9 restantes itens ifs abaixo
 
                         }
 
@@ -155,17 +165,35 @@ namespace Am.ViewModels
                         if (baseDados == "Detran")
                         {
 
-                            string sourceImage2 = service.getDetran(cpf);
+                            List<string> listaSource = service.getDetran(cpf);
                             relatorio.NomeImage2 = "------DETRAN----";
-                            relatorio.Image2 = sourceImage2;
+                            string sourceDetran1 = "";
+                            string sourceDetran2 = "";
+                            foreach (string arpenpCont in listaSource)
+                            {
+                                if (arpenpCont == "detran.jpeg")
+                                {
+                                    sourceDetran1 = arpenpCont;
+                                }
+
+                                if (arpenpCont == "detran2.jpeg")
+                                {
+                                    sourceDetran2 = arpenpCont;
+
+                                }
+
+                            }
+                            relatorio.Image2 = sourceDetran1;
+                            relatorio.Image3 = sourceDetran2;
+
                             GlobalViewModel.Relatorio = relatorio;
                         }
 
                         if (baseDados == "Infocrim")
                         {
-                            string sourceImage3 = service.getInfocrim(cpf);
-                            relatorio.NomeImage3 = "------INFOCRIM----";
-                            relatorio.Image3 = sourceImage3;
+                            string sourceImage4 = service.getInfocrim(cpf);
+                            relatorio.NomeImage4 = "------INFOCRIM----";
+                            relatorio.Image4 = sourceImage4;
                             GlobalViewModel.Relatorio = relatorio;
                         }
 
@@ -182,13 +210,13 @@ namespace Am.ViewModels
 
                         if (baseDados == "Siel")
                         {
-                           
+
                             List<SielModel> listaSiel = new List<SielModel>();
                             listaSiel = service.getSiel();
 
-                            foreach ( SielModel sielCont in listaSiel)
+                            foreach (SielModel sielCont in listaSiel)
                             {
-                                relatorio.Resultado +=(sielCont.ToString());
+                                relatorio.Resultado += (sielCont.ToString());
                             }
 
                             GlobalViewModel.Relatorio = relatorio;

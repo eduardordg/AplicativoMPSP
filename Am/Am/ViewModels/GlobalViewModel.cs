@@ -9,10 +9,6 @@ namespace Am.ViewModels
 
         public static RelatorioViewModel Relatorio { get; set; }
 
-        public static RelatorioViewModel ImageGlobal { get; set; }
 
-        public static RelatorioViewModel ImageGlobal2 { get; set; }
-
-        public static RelatorioViewModel ImageGlobal3 { get; set; }
     }
 }

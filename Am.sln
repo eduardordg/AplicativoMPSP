@@ -7,7 +7,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Am.Android", "Am\Am.Android
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Am.iOS", "Am\Am.iOS\Am.iOS.csproj", "{3AD5D9D9-6711-4B97-A377-712D7D4E0E24}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Am", "Am\Am\Am.csproj", "{2770C2BB-9165-4A47-B600-B461A69701C6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Am", "Am\Am\Am.csproj", "{2770C2BB-9165-4A47-B600-B461A69701C6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{80315550-A069-4B98-A08A-9F5A9DA6DCE8}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

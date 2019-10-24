@@ -15,7 +15,7 @@ namespace Am.ViewModels
         public RelatorioViewModel()
         {
 
-            //Validação para passagem dos dados da GlobalViewModel para a RelatorioViewModel
+            //Validação para passagem dos dados da GlobalViewModel para a RelatorioViewModel para aparecer na tela de Relatorio
             if (GlobalViewModel.Relatorio != null)
             {
                 this.Resultado = GlobalViewModel.Relatorio.Resultado;
@@ -25,6 +25,8 @@ namespace Am.ViewModels
                 this.NomeImage2 = GlobalViewModel.Relatorio.nomeImage2;
                 this.Image3 = GlobalViewModel.Relatorio.image3;
                 this.NomeImage3 = GlobalViewModel.Relatorio.nomeImage3;
+                this.Image4 = GlobalViewModel.Relatorio.image4;
+                this.NomeImage4 = GlobalViewModel.Relatorio.nomeImage4;
                 GlobalViewModel.Relatorio = null;
 
             }
@@ -127,6 +129,33 @@ namespace Am.ViewModels
             {
 
                 nomeImage3 = value;
+                NotifyPropertyChanged();
+
+
+            }
+        }
+        private string image4;
+        public string Image4
+        {
+            get { return image4; }
+            set
+            {
+
+                image4 = value;
+                NotifyPropertyChanged();
+
+
+            }
+        }
+
+        private string nomeImage4;
+        public string NomeImage4
+        {
+            get { return nomeImage4; }
+            set
+            {
+
+                nomeImage4 = value;
                 NotifyPropertyChanged();
 
 

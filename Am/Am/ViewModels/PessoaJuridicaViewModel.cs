@@ -24,7 +24,7 @@ namespace Am.ViewModels
 
 
                 var pessoaJuridicaBusiness = new PessoaJuridicaBusiness();  //Instanciando business para acessar a service e pegar dados da api
-                var service = pessoaJuridicaBusiness.getService(); //atribuiu o objeto service a uma variavel para fazer as chamadas das API dentros dos IF conforme resultados dos Switchs
+                var service = pessoaJuridicaBusiness.getService(); //atribuiu o objeto service a uma variavel para fazer as chamadas das API dentros dos IF conforme resultados do Picker
                 var relatorio = new RelatorioViewModel(); // instancia relatorio para envio das informações para a tela
 
                 //validação CNPJ NULO
@@ -36,7 +36,7 @@ namespace Am.ViewModels
 
                 else
                 {
-                    //Validação todos Switchs Nulos
+                    //Validação Picker Nulo
                     if (baseDados == null)
                     {
                         DependencyService.Get<IMessage>().ShortAlert("Por favor selecione ao menos uma base de dados para consulta");
@@ -49,8 +49,8 @@ namespace Am.ViewModels
                         {
 
                             JucespModel jucesp = new JucespModel();
-                            jucesp = service.getJucesp(cnpj); //envio dos dados que a instancia da service conseguiu
-                            relatorio.Resultado = jucesp.ToString(); // soma-se ao valor que já há no resultado
+                            jucesp = service.getJucesp(cnpj); 
+                            relatorio.Resultado = jucesp.ToString(); 
 
                             CadespModel cadesp = new CadespModel();
                             cadesp = service.getCadesp(cnpj);
@@ -73,9 +73,9 @@ namespace Am.ViewModels
                         if (baseDados == "Jucesp")
                         {
                             JucespModel jucesp = new JucespModel();
-                            jucesp = service.getJucesp(cnpj); //envio dos dados que a instancia da service conseguiu
-                            relatorio.Resultado = jucesp.ToString(); // soma-se ao valor que já há no resultado
-                            GlobalViewModel.Relatorio = relatorio;// manda os dados para a global, fazendo a RelatorioViewModel enxergar
+                            jucesp = service.getJucesp(cnpj); 
+                            relatorio.Resultado = jucesp.ToString(); 
+                            GlobalViewModel.Relatorio = relatorio;
 
                            
                         }
@@ -91,18 +91,20 @@ namespace Am.ViewModels
 
                         if (baseDados == "Arisp")
                         {
-                            string sourceImage = service.getArisp(cnpj);
-                            relatorio.Image = sourceImage;
-                            GlobalViewModel.ImageGlobal = relatorio;
+                            string sourceImage1 = service.getArisp(cnpj);
+                            relatorio.NomeImage = "------ARISP----";
+                            relatorio.Image = sourceImage1;
+                            GlobalViewModel.Relatorio = relatorio;
                         }
 
                        
 
                         if (baseDados == "Infocrim")
                         {
-                            string sourceImage = service.getInfocrim(cnpj);
-                            relatorio.Image = sourceImage;
-                            GlobalViewModel.ImageGlobal = relatorio;
+                            string sourceImage2 = service.getInfocrim(cnpj);
+                            relatorio.NomeImage2 = "------INFOCRIM----";
+                            relatorio.Image2 = sourceImage2;
+                            GlobalViewModel.Relatorio = relatorio;
                         }
 
 
@@ -130,7 +132,7 @@ namespace Am.ViewModels
             }
         }
 
-        //Declaração atributos que vão receber o valor do Switch das base de dados
+        //Declaração atributos que vão receber o valor do Picker das base de dados
 
         private string baseDados;
         public string BaseDados

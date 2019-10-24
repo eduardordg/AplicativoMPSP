@@ -36,6 +36,13 @@
                         <FileImageSource File="{Binding Image3}"/>
                     </Image.Source>
                 </Image>
+                <Label Text= "{Binding NomeImage4}"  FontSize="Title" HorizontalOptions="Center" TextColor="Black" Margin="0,30,0,20" ></Label>
+                <Image Margin="0">
+                    <Image.Source>
+                        <FileImageSource File="{Binding Image4}"/>
+                    </Image.Source>
+                </Image>
+
 
             </StackLayout>
         </ScrollView>

@@ -25,8 +25,7 @@ namespace Am.ViewModels
 
                 var usuarioBusiness = new UsuarioBusiness();
 
-                //Validações para login 
-                //Em breve vou refatorar esse grupo de validações em um método :)
+
 
 
                 if (String.IsNullOrEmpty(user) == false)

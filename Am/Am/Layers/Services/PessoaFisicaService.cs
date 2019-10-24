@@ -68,10 +68,13 @@ namespace Am.Layers.Services
         }
 
 
-        public string getDetran(string cpf) //IMAGE
+        public List<string> getDetran(string cpf) //IMAGE
         {
-           string sourceImage = "detran.jpeg";
+            List<string> sourceImage= new List<string>();
 
+            sourceImage.Add("detran.jpeg");
+            sourceImage.Add("detran2.jpeg");
+                
 
             return sourceImage;
         }
@@ -108,7 +111,7 @@ namespace Am.Layers.Services
         public List<SielModel> getSiel()
         {
             string uri = "http://10.0.2.2:8080/siel/"; 
-                                                       // SielModel siel = new SielModel();
+                                                      
             List<SielModel> siel = new List<SielModel>();
 
             System.Net.Http.HttpClient client = new HttpClient();
