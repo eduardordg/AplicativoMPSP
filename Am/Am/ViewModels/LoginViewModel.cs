@@ -18,48 +18,8 @@ namespace Am.ViewModels
         public LoginViewModel()
         {
 
-
-
-
             EntrarClickedCommand = new Command(() => {
-
-                var usuarioBusiness = new UsuarioBusiness();
-
-
-
-
-                if (String.IsNullOrEmpty(user) == false)
-                {
-                    if (String.IsNullOrEmpty(password) == false)
-                    {
-
-                        if (usuarioBusiness.GetLogin(user, password) == true)
-                        {
-
-                            MessagingCenter.Send<LoginViewModel>(this, "LoginSucesso");
-                            DependencyService.Get<IMessage>().ShortAlert("Bem vindo senhor(a) Investigador(a)");
-                            
-
-                        }
-                        else
-                        {
-
-                            DependencyService.Get<IMessage>().ShortAlert("Acesso inválido - Dados incorretos");
-                        }
-
-                    }
-                    else
-                    {
-
-                        DependencyService.Get<IMessage>().ShortAlert("Por favor digite a sua senha");
-                    }
-                }
-                else
-                {
-
-                    DependencyService.Get<IMessage>().ShortAlert("Por favor digite o seu usuário");
-                }
-
+            ValidationCampos(user, password);
 
             });
         }
@@ -106,6 +66,46 @@ namespace Am.ViewModels
         protected virtual void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public bool ValidationCampos(string user, string password)
+        {
+            bool resposta = false;
+            UsuarioBusiness usuarioBusiness = new UsuarioBusiness();
+
+            if (String.IsNullOrEmpty(user) == false)
+            {
+                if (String.IsNullOrEmpty(password) == false)
+                {
+
+                    if (usuarioBusiness.GetLogin(user, password) == true)
+                    {
+
+                        MessagingCenter.Send<LoginViewModel>(this, "LoginSucesso");
+                        DependencyService.Get<IMessage>().ShortAlert("Bem vindo senhor(a) Investigador(a)");
+
+
+                    }
+                    else
+                    {
+
+                        DependencyService.Get<IMessage>().ShortAlert("Acesso inválido - Dados incorretos");
+                    }
+
+                }
+                else
+                {
+
+                    DependencyService.Get<IMessage>().ShortAlert("Por favor digite a sua senha");
+                }
+            }
+            else
+            {
+
+                DependencyService.Get<IMessage>().ShortAlert("Por favor digite o seu usuário");
+            }
+
+            return resposta;
         }
 
 

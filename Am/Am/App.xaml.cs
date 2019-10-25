@@ -19,9 +19,9 @@ namespace Am
 
             // MainPage = new Am.Views.RelatorioPage();
 
-          //   MainPage = new Am.Views.LoginPage();
+             MainPage = new Am.Views.LoginPage();
 
-            MainPage = new Am.Views.PrincipalPage();
+            //   MainPage = new Am.Views.PrincipalPage();
 
 
         }
@@ -86,15 +86,7 @@ namespace Am
             // Handle when your app resumes
         }
 
-        internal static void LoadGlobalVariables()
-        {
-            // Carregando a lista de Perfil para acesso Global
-            // Model.Global.Perfis = new PerfilBusiness().GetList();
-
-            // Carregando o Investidor Logado
-            //  Model.Global.Investidor = new InvestidorBusiness().GetInvestidorLogged();
-
-        }
+        
 
 
         internal static void MensagemAlerta(string texto)

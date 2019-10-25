@@ -102,8 +102,8 @@ namespace Am.ViewModels
                         if (baseDados == "Infocrim")
                         {
                             string sourceImage2 = service.getInfocrim(cnpj);
-                            relatorio.NomeImage2 = "------INFOCRIM----";
-                            relatorio.Image2 = sourceImage2;
+                            relatorio.NomeImage = "------INFOCRIM----";
+                            relatorio.Image = sourceImage2;
                             GlobalViewModel.Relatorio = relatorio;
                         }
 

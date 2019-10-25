@@ -166,7 +166,7 @@ namespace Am.ViewModels
                         {
 
                             List<string> listaSource = service.getDetran(cpf);
-                            relatorio.NomeImage2 = "------DETRAN----";
+                            relatorio.NomeImage = "------DETRAN----";
                             string sourceDetran1 = "";
                             string sourceDetran2 = "";
                             foreach (string arpenpCont in listaSource)
@@ -183,8 +183,8 @@ namespace Am.ViewModels
                                 }
 
                             }
-                            relatorio.Image2 = sourceDetran1;
-                            relatorio.Image3 = sourceDetran2;
+                            relatorio.Image = sourceDetran1;
+                            relatorio.Image2 = sourceDetran2;
 
                             GlobalViewModel.Relatorio = relatorio;
                         }
@@ -192,8 +192,8 @@ namespace Am.ViewModels
                         if (baseDados == "Infocrim")
                         {
                             string sourceImage4 = service.getInfocrim(cpf);
-                            relatorio.NomeImage4 = "------INFOCRIM----";
-                            relatorio.Image4 = sourceImage4;
+                            relatorio.NomeImage = "------INFOCRIM----";
+                            relatorio.Image = sourceImage4;
                             GlobalViewModel.Relatorio = relatorio;
                         }
 
